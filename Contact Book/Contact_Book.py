@@ -15,7 +15,7 @@ address = StringVar()
 pin = IntVar()
 
 def sno():
-    con = cx_Oracle.connect("system/adp@localhost/xepdb1")
+    con = cx_Oracle.connect("your connection path")
     cursor = con.cursor()
     cursor.execute("select sno from contact_book")
     s = cursor.fetchall()  
@@ -30,7 +30,7 @@ def save():
     a = address.get()
     pi = pin.get()
     
-    con = cx_Oracle.connect("system/adp@localhost/xepdb1")
+    con = cx_Oracle.connect("your connection path")
     cursor = con.cursor()
     cursor.execute("insert into contact_book values(&sno,&fname,&lname,&phone,&email,&address,&pin)",(sno(),f,l,p,e,a,pi))
     con.commit()
@@ -58,7 +58,7 @@ def contactl():
         dt = Label(contact,text=i,width=15,fg="blue",font=("vardana",14,"bold")).place(x=m,y=100)
         m = m+200
 
-    con = cx_Oracle.connect("system/adp@localhost/xepdb1")
+    con = cx_Oracle.connect("your connection path")
     cursor = con.cursor()
     cursor.execute("select * from contact_book")
     data = cursor.fetchall()
